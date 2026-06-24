@@ -1,0 +1,15 @@
+stage,state,estimated_n,share
+state_t1,creative_continuation_other,180.32500000000002,0.05895623033225715
+state_t1,local_search,1397.775,0.45699456455106463
+state_t1,non_creative_shift,315.05,0.10300380072745106
+state_t1,wide_search,1165.4750000000001,0.38104540438922724
+human_state_t2,conversation_end,615.25,0.2011524786464506
+human_state_t2,creative_continuation_other,519.025,0.1696922636805754
+human_state_t2,local_search,1008.0,0.3295598512403449
+human_state_t2,non_creative_shift,301.125,0.09845110139360007
+human_state_t2,wide_search,615.225,0.20114430503902897
+human_state_t3,conversation_end,1439.95,0.47078344027136376
+human_state_t3,creative_continuation_other,359.05,0.11738934978952961
+human_state_t3,local_search,620.4000000000001,0.20283624177530757
+human_state_t3,non_creative_shift,354.225,0.11581184355715396
+human_state_t3,wide_search,285.0,0.09317912460664514

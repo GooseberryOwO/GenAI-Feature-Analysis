@@ -1,131 +1,72 @@
 # GenAI Feature Analysis
 
-This repository contains a curated, privacy-preserving version of an ongoing
-research project on how people use generative AI for brainstorming and how AI
-response strategies relate to later user behavior and outcomes.
+本仓库整理了两个相互连接的研究目标：
 
-## Research goals
-
-1. **How users brainstorm with GenAI**
-   - distinguish strict brainstorming, single creative generation,
-     refinement/selection, and non-creative tasks;
-   - measure exploration duration;
-   - trace wide search, local search, and exit transitions.
-
-2. **How AI affects user brainstorming**
-   - identify interpretable AI response strategies;
-   - relate strategies to the user's next-turn behavior;
-   - examine associations with Knowledge Expansion (KE), satisfaction, and
-     other conversation-level outcomes.
+1. **Goal 1: User brainstorming process**
+   用户如何使用 GenAI 进行 brainstorming，包括 creative activity 的类型、持续时间、wide/local search、过程转换和 topic differences。
+2. **Goal 2: AI strategy and user outcomes**
+   AI response strategy 如何关联用户下一步 reaction，以及后续 KE、satisfaction 等 conversation outcomes。
 
 ## Repository structure
 
 ```text
-docs/
-  brainstorm_creativity_definitions.md
-  ai_strategy_ke_findings.md
+shared_methodology/
+  definitions/                     Creativity / brainstorming definitions
+  classification/                  Shared four-class turn-level classifier
+  data_and_privacy.md
+  methods_overview.md
 
-src/
-  classification/       Turn-level creativity classifier
-  user_process/         Exploration and wide/local process analysis
-  ai_strategy_ke/       Adapters and summaries for strategy-outcome analysis
+goal1_user_brainstorm_process/
+  src/                             Candidate extraction, calibration, full analysis
+  results/                         Aggregate tables only
+  figures/                         Public result figures
+  reports/                         Main findings, literature map, qualitative patterns
 
-results/
-  classification/       Aggregate label distributions
-  user_process/         Aggregate transition tables
-  ai_strategy_ke/       Strategy-KE comparison tables
-
-figures/                 Publication- and feedback-ready figures
+goal2_ai_strategy_outcomes/
+  src/                             Strategy-KE and next-reaction analyses
+  results/                         Aggregate result tables
+  figures/
+  reports/
 ```
 
-## Main pipeline
+各文件只保留一个正式版本。原始 conversations、逐行预测数据、人工审核原文、模型文件和大型中间数据不进入 GitHub。
 
-```text
-Human-AI conversations
-        |
-        v
-Turn-level four-class creativity classifier
-        |
-        +--> conversation-level creativity aggregation
-        |
-        v
-Exploration runs and wide/local search paths
-        |
-        v
-AI response strategies
-        |
-        v
-Next-user-turn reaction and KE/satisfaction outcomes
-```
+## Shared four-class labels
 
-The classifier predicts each **user turn**. A creative conversation is later
-defined by aggregating the turn labels within a conversation; it is not a
-separate conversation-level classifier.
+- `strict_brainstorming`: 明确探索多个 ideas/options。
+- `single_creative_generation`: 只要求一个 creative output。
+- `refinement_or_selection`: 选择、比较、修改或深化已有方向。
+- `non_creative_task`: 不属于上述 creative activity。
 
-## Current headline findings
+Classifier 在 **turn level** 运行；conversation-level 指标由同一 conversation 内的 turn labels 聚合得到。
 
-- Four-class turn-level model:
-  - 5-fold CV accuracy: **83.2%**
-  - holdout accuracy: **81.5%**
-- In the expanded data:
-  - broad creativity-related user turns: **34.51%**
-  - strict brainstorming user turns: **7.88%**
-- Exploration runs are usually short.
-- After a manually calibrated genuine multiple-option response:
-  - local search: **45.7%**
-  - continued wide search: **38.1%**
-  - exit from the wide/local path: **16.2%**
-- In strict-brainstorming conversations, the strongest interpretable
-  associations with higher KE involve:
-  - late synthesis;
-  - context uptake;
-  - clarification/questioning;
-  - contrastive explanation;
-  - selection criteria;
-  - convergent synthesis.
+## Current findings
 
-The emerging process hypothesis is that AI can first broaden the option space,
-but user knowledge diversity may benefit more when later responses compare,
-organize, explain, and synthesize the alternatives instead of continually
-adding more options.
+- Four-class classifier: 5-fold CV accuracy **83.2%**；holdout accuracy **81.5%**。
+- 全量 Goal 1：262,718 user turns、56,942 conversations；36,018 conversations 至少含一个 creative turn。
+- Creative runs 通常较短：平均 **1.86 turns**，中位数 **1 turn**。
+- Creative conversations 中：
+  - single creative generation only: **56.8%**
+  - wide exploration without observed local refinement: **32.0%**
+  - extended iterative process group: **13.1%**
+- 人工校准的 genuine multiple-option paths 显示：
+  - initial wide search 后转入 local search: **16.2%**
+  - initial local search 后继续 local: **48.1%**
+- Goal 2 的 preliminary result 指向：late synthesis、context uptake、clarification、comparison 和 selection criteria 与较高 KE 的关联更强。
 
-## Relationship to `multi-turn-analysis`
-
-The AI-strategy analysis adapts outputs and methods from Yixin Wang's
-`multi-turn-analysis` repository. That pipeline represents assistant responses
-with interpretable action features and conditional cVAE latent strategies, then
-uses DTR-style residualization to rank associations with KE and satisfaction.
-
-This repository does **not** redistribute the upstream repository or its large
-model outputs. It contains only our adapters, creativity-subset analysis, and
-aggregate results.
-
-## Running the scripts
-
-Install the Python dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Set the root containing the private local data and model outputs:
+## Reproducibility
 
 ```powershell
+pip install -r requirements.txt
 $env:GENAI_DATA_ROOT="D:\path\to\organized_project_files"
 ```
 
-For scripts that write into a standalone analysis directory:
+Goal 1 的正式执行顺序和结果解释见
+[`goal1_user_brainstorm_process/README.md`](goal1_user_brainstorm_process/README.md)。
 
-```powershell
-$env:GENAI_ANALYSIS_ROOT="D:\path\to\analysis_output"
-```
+数据隐私与未上传内容见
+[`shared_methodology/data_and_privacy.md`](shared_methodology/data_and_privacy.md)。
 
-The raw conversational data and trained models are not included. See
-[`docs/data_and_privacy.md`](docs/data_and_privacy.md).
+## Interpretation boundary
 
-## Interpretation
-
-The DTR-style estimates are residualized, standardized associations after
-controlling for observable conversation state, topic, length, and related
-features. They prioritize hypotheses; they are not randomized causal effects.
-
+大规模 classifier 结果用于描述总体 process；人工校准结果用于解释 semantic wide/local transition。DTR-style estimates 和其他模型结果均为控制可观测状态后的 association，不是 randomized causal effects。

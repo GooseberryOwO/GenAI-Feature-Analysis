@@ -1,4 +1,4 @@
-sample,feature,中文策略,phase,dtr_adjusted_corr,split_a_corr,split_b_corr,stable_sign,n
+sample,feature,strategy_name_cn,phase,dtr_adjusted_corr,split_a_corr,split_b_corr,stable_sign,n
 Broad creativity,motif_late_synthesis,后期综合整理,motif,0.1374604572063696,0.1276022908261123,0.1480505272468308,1,36017
 Broad creativity,max_assistant_question,曾主动提问,ever,0.1317292142485327,0.1330076797867032,0.1320332714185483,1,36017
 Broad creativity,motif_clarify_then_answer,先澄清再回答,motif,0.1304900875949782,0.1305523947667201,0.1319349737527032,1,36017
@@ -9,11 +9,6 @@ Broad creativity,max_convergent_synthesis,收敛并综合方案,ever,0.054925748
 Broad creativity,max_knowledge_bridge,解释可迁移知识,ever,0.0495347929632982,0.0413826780707937,0.0572296654589947,1,36017
 Broad creativity,max_divergent_ideas,提出差异化想法,ever,0.0418281192577331,0.03816255719407,0.0450452106874209,1,36017
 Broad creativity,max_option_generation,生成多个选项,ever,0.0385621941098482,0.0284624923577065,0.0480999712355219,1,36017
-Broad creativity,max_constraint_aware_brainstorming,遵守约束的头脑风暴,ever,0.0005365253959071,-0.010942372050834,0.0124636095029897,0,36017
-Broad creativity,mean_divergent_ideas,持续发散想法,overall,-0.0663384729148311,-0.0631429485154798,-0.0697932728617945,1,36017
-Broad creativity,mean_option_generation,持续生成选项,overall,-0.083239993777787,-0.0816277326591732,-0.0855747971174382,1,36017
-Broad creativity,mean_procedure,持续给操作步骤,overall,-0.0987226836861942,-0.1005861599647626,-0.0968136396299742,1,36017
-Broad creativity,mean_direct_answer,持续直接给答案,overall,-0.1370192337848514,-0.1410977939432822,-0.134146164203886,1,36017
 Strict brainstorming,motif_late_synthesis,后期综合整理,motif,0.1450658392998499,0.1541938464871371,0.1359001874277704,1,12565
 Strict brainstorming,max_context_uptake,吸收用户上下文,ever,0.1158687186311815,0.1189875385666876,0.1125233986803671,1,12565
 Strict brainstorming,max_assistant_question,曾主动提问,ever,0.1152516975799771,0.118733529702057,0.1114673585805032,1,12565
@@ -24,8 +19,3 @@ Strict brainstorming,max_convergent_synthesis,收敛并综合方案,ever,0.07814
 Strict brainstorming,max_option_generation,生成多个选项,ever,0.0605895269956533,0.0659826017166332,0.0547232661279705,1,12565
 Strict brainstorming,max_divergent_ideas,提出差异化想法,ever,0.0604718328533644,0.0556125990592802,0.0671428143951031,1,12565
 Strict brainstorming,max_knowledge_bridge,解释可迁移知识,ever,0.0531156586070867,0.0632734927216164,0.0408385473422577,1,12565
-Strict brainstorming,max_constraint_aware_brainstorming,遵守约束的头脑风暴,ever,0.0412199073725561,0.0549741173171407,0.0265195725725785,1,12565
-Strict brainstorming,mean_divergent_ideas,持续发散想法,overall,-0.0493380922345417,-0.0385494881902224,-0.0569302894204433,1,12565
-Strict brainstorming,mean_option_generation,持续生成选项,overall,-0.0716870883185885,-0.0579648067264606,-0.0836603566132312,1,12565
-Strict brainstorming,mean_procedure,持续给操作步骤,overall,-0.0916165576712827,-0.0902466887054263,-0.0904809585281146,1,12565
-Strict brainstorming,mean_direct_answer,持续直接给答案,overall,-0.1082194049185324,-0.1026488157042117,-0.1113336066444653,1,12565

@@ -17,6 +17,7 @@ models/
 *manual*.csv
 *review*.csv
 *sample*.csv
+!goal1_user_brainstorm_process/results/manual_calibrated_t1_to_t2_with_ci.csv
 
 # Python
 __pycache__/
@@ -29,4 +30,3 @@ venv/
 .DS_Store
 Thumbs.db
 .vscode/
-

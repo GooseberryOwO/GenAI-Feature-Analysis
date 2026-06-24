@@ -1,0 +1,32 @@
+# Private or large data
+data/
+private_data/
+models/
+*.joblib
+*.pkl
+*.pickle
+*.parquet
+*.jsonl
+*.csv.gz
+*.zip
+
+# Large generated datasets
+*predictions*.csv
+*conversation_trajectories*.csv
+*turn_level*.csv
+*manual*.csv
+*review*.csv
+*sample*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+

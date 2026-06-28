@@ -129,17 +129,6 @@ Topic family 与三类 user process 的关系显著，Cramer's V = **0.245**；t
 4. Topic family 来自现有 domain labels 归并，`Other` 类仍较大。
 5. 当前结果描述 association 和 process sequence，不构成 AI strategy 对用户行为的因果效应。
 
-## 可以给老师看的主文件
-
-建议主发这份 report，并附 2-3 张最能讲故事的图：
-
-- `reports/goal1_brainstorm_process_report.md`
-- `figures/sample_construction_workflow_cn.png`
-- `figures/human_calibrated_multiturn_sankey_cn.png`
-- `figures/manual_calibrated_next_turn_transitions.png`
-
-如果老师想复核细节，再补充 `results/manual_calibrated_t1_to_t2_with_ci.csv` 和 `results/process_taxonomy_summary.csv`。
-
 ## 连接到 Goal 2
 
 Goal 1 已经提供了用户的 current state 和 next user reaction labels。下一步 Goal 2 可以把 AI response strategy 放在状态转移之前，研究：

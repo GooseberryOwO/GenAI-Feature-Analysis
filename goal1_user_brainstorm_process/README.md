@@ -8,11 +8,17 @@ This folder contains the finished Goal 1 analysis package. It focuses on user pr
 
 1. [`reports/goal1_brainstorm_process_report.md`](reports/goal1_brainstorm_process_report.md)  
    Main Chinese report for sharing with the professor.
-2. [`figures/sample_construction_workflow_cn.png`](figures/sample_construction_workflow_cn.png)  
+2. [`reports/goal1_visualization_package.md`](reports/goal1_visualization_package.md)  
+   Short guide to the upgraded visual package.
+3. [`figures/goal1_finding_summary_board.png`](figures/goal1_finding_summary_board.png)  
+   One-page visual summary of the main findings.
+4. [`figures/pca_user_process_clusters.png`](figures/pca_user_process_clusters.png)  
+   PCA projection of the three user-process groups.
+5. [`figures/sample_construction_workflow_cn.png`](figures/sample_construction_workflow_cn.png)  
    Workflow showing conversation-level and turn-level analysis stages.
-3. [`figures/human_calibrated_multiturn_sankey_cn.png`](figures/human_calibrated_multiturn_sankey_cn.png)  
+6. [`figures/human_calibrated_multiturn_sankey_cn.png`](figures/human_calibrated_multiturn_sankey_cn.png)  
    Human-calibrated multi-turn wide/local flow.
-4. [`figures/manual_calibrated_next_turn_transitions.png`](figures/manual_calibrated_next_turn_transitions.png)  
+7. [`figures/manual_transition_story_ci.png`](figures/manual_transition_story_ci.png)  
    Next-turn transition estimates with 95% CI.
 
 ## Analysis layers

@@ -139,10 +139,8 @@ def add_card(ax, xy, wh, title, value, subtitle, color):
             linewidth=1.2,
         )
     )
-    subtitle_wrapped = textwrap.fill(subtitle, width=38)
-    ax.text(x + 0.035, y + h - 0.06, title, fontsize=12.5, weight="bold", color=color, va="top")
-    ax.text(x + 0.035, y + 0.118, value, fontsize=23, weight="bold", color=COLORS["ink"], va="bottom")
-    ax.text(x + 0.035, y + 0.05, subtitle_wrapped, fontsize=8.9, color="#5B6975", va="bottom", linespacing=1.15)
+    ax.text(x + 0.035, y + h - 0.055, title, fontsize=12.5, weight="bold", color=color, va="top")
+    ax.text(x + 0.035, y + 0.095, value, fontsize=24, weight="bold", color=COLORS["ink"], va="bottom")
 
 
 def load_public_results():
@@ -362,16 +360,27 @@ def make_topic_process_bubble(topic: pd.DataFrame) -> None:
         alpha=0.92,
     )
     label_offsets = {
-        "Education and research": (-0.9, 0.018, "right"),
+        "Education and research": (-0.35, 0.028, "right"),
         "Translation and language": (-0.45, 0.018, "right"),
-        "Business and management": (0.20, 0.018, "left"),
+        "Business and management": (-0.45, 0.018, "right"),
         "Marketing and branding": (0.25, 0.016, "left"),
+        "Other": (0.38, 0.040, "left"),
+        "Creative writing": (0.35, -0.005, "left"),
+        "Visual design and media": (0.35, 0.018, "left"),
     }
     for _, row in topic.iterrows():
         x = row["strict_conversation_rate"] * 100
         y = row["mean_switches"]
         dx, dy, ha = label_offsets.get(row["label"], (0.25, 0.015, "left"))
-        ax.text(x + dx, y + dy, row["label"], fontsize=9.0, color=COLORS["ink"], ha=ha)
+        ax.text(
+            x + dx,
+            y + dy,
+            row["label"],
+            fontsize=9.0,
+            color=COLORS["ink"],
+            ha=ha,
+            bbox={"boxstyle": "round,pad=0.10", "fc": "white", "ec": "none", "alpha": 0.78},
+        )
     style_ax(ax, grid_axis="both")
     fig.subplots_adjust(top=0.80, right=0.86)
     fig.suptitle("Topic families differ in brainstorming intensity and switching", x=0.08, y=0.965, ha="left", fontsize=19, weight="bold", color=COLORS["ink"])
